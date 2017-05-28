@@ -1,0 +1,110 @@
+@import './variables.scss';
+
+.applicant-detail-view-holder {
+  background-color: rgba(255, 255, 255, 0.97);
+  height: calc(100% - #{$header-height});
+  left: 0;
+  position: fixed;
+  top: $header-height;
+  width: 100%;
+  z-index: 1;
+
+  &.hidden {
+    display: none;
+  }
+
+  &.fadeIn {
+    animation-duration: 1s;
+    animation-name: fadeInLeft;
+    animation-fill-mode: both;
+  }
+
+  &.fadeOut {
+    animation-duration: 0.75s;
+    animation-name: fadeOut;
+    animation-fill-mode: both;
+  }
+}
+
+.applicant-detail-view {
+  margin: 20px;
+  position: relative;
+
+  .close {
+    color: inherit;
+    font-size: 40px;
+    font-weight: 100;
+    line-height: 1;
+    opacity: 0.4;
+    position: absolute;
+    right: 0;
+    text-decoration: none;
+    top: 0;
+    
+    &:hover {
+      opacity: 0.6;
+    }
+  }
+  .applicant-status-holder {
+    border: 1px solid $brand-primary;
+    border-radius: 4px;
+    font-weight: 500;
+    margin: 0 200px 40px 0;
+    padding: 15px;
+    text-transform: capitalize;
+
+    .status-indicator {@include status-indicator(8px)};
+  }
+
+  .avatar-image-holder {
+    $avatar-radius: 100px;
+    background-color: $grey;
+    border-radius: $avatar-radius;
+    display: inline-block;
+    height: 2 * $avatar-radius;
+    width: 2 * $avatar-radius;
+  }
+
+  .applicant-info-holder {
+    text-align: center;
+
+    .applicant-name {
+      font-weight: 300;
+      letter-spacing: 0.5px;
+      margin-bottom: 0;
+    }
+
+    .applicant-location {
+      color: $grey;
+      font-weight: bold;
+      text-transform: capitalize;
+    }
+
+    .actions-table {
+      margin: 20px auto;
+      width: 50%;
+    }
+  }
+}
+
+@keyframes fadeInLeft {
+  0% {
+    opacity: 0;
+    transform: translate3d(-100%, 0, 0);
+  }
+
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}

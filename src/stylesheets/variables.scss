@@ -9,3 +9,25 @@ $red: #fc0d1b;
 $green: #108213;
 $blue: #1824fb;
 $grey: #969696;
+
+// mixins
+@mixin status-indicator($circle-radius) {
+  border-radius: $circle-radius;
+  display: inline-block;
+  height: 2 * $circle-radius;
+  margin-right: 7px;
+  vertical-align: middle;
+  width: 2 * $circle-radius;
+
+  &.needs-screening {
+    background-color: $red;
+  }
+
+  &.offer-sent {
+    background-color: $green;
+  }
+
+  &.hired {
+    background-color: $blue;
+  }
+}

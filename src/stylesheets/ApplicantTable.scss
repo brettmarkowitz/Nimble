@@ -1,0 +1,46 @@
+@import './variables.scss';
+
+.applicant-table {
+  border-collapse: collapse;
+  margin: 100px 0;
+  width: 100%;
+
+  td:first-child, th:first-child {
+    border-left: 2px solid transparent; // placeholder used for indicating the hovered row
+  }
+
+  .applicant-row {
+    cursor: pointer;
+    color: rgba(0,0,0,0.75);
+
+    &:hover {
+      color: rgba(0,0,0,1);
+      text-shadow:0.2px 0px 0px black;  // hack to make text look bold without changing width, might not look crisp enough
+
+      td:first-child, th:first-child {
+        border-left-color: $brand-primary;
+      }
+    }
+  }
+
+  $cell-padding: 15px;
+
+  th {
+    color: $grey;
+    font-size: 12px;
+    font-weight: 400;
+    padding: 0 $cell-padding;
+    text-align: left;
+    text-transform: uppercase;
+  }
+
+  td {
+    background-color: #fff;
+    border-top: 10px solid $bg-color;
+    padding: $cell-padding;
+    text-align: left;
+    text-transform: capitalize;
+
+    .status-indicator {@include status-indicator(6px)};
+  }
+}
