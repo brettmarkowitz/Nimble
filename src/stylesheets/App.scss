@@ -1,0 +1,192 @@
+@import './variables.scss';
+
+// mixins
+@mixin status-indicator($status-indicator-radius) {
+  border-radius: $status-indicator-radius;
+  display: inline-block;
+  height: 2 * $status-indicator-radius;
+  margin-right: 7px;
+  vertical-align: middle;
+  width: 2 * $status-indicator-radius;
+
+  &.needs-screening {
+    background-color: $red;
+  }
+
+  &.offer-sent {
+    background-color: $green;
+  }
+
+  &.hired {
+    background-color: $blue;
+  }
+}
+
+
+.app-header {
+  background-color: $brand-secondary;
+  padding: 15px;
+
+  .app-logo {
+    height: 40px;
+  }
+}
+
+.container {
+  padding: 0 15px;
+  margin: 0 auto;
+  max-width: 1170px;  // arbitrary value taken from bootstrap
+}
+
+.applicant-table {
+  border-collapse: collapse;
+  margin: 100px 0;
+  width: 100%;
+
+  $cell-padding: 15px;
+
+  td:first-child, th:first-child {
+    border-left: 2px solid transparent;
+  }
+
+  .applicant-row {
+    cursor: pointer;
+    color: rgba(0,0,0,0.75);
+
+    &:hover {
+      color: rgba(0,0,0,1);
+      text-shadow:0.2px 0px 0px black;
+
+      td:first-child, th:first-child {
+        border-left-color: $brand-primary;
+      }
+    }
+  }
+
+  th {
+    color: $grey;
+    font-size: 12px;
+    font-weight: 400;
+    padding: 0 $cell-padding;
+    text-align: left;
+    text-transform: uppercase;
+  }
+
+  td {
+    background-color: #fff;
+    border-top: 10px solid $bg-color;
+    padding: $cell-padding;
+    text-align: left;
+    text-transform: capitalize;
+
+    .status-indicator {@include status-indicator(6px)};
+  }
+}
+
+.applicant-detail-view-holder {
+  background-color: rgba(255, 255, 255, 0.97);
+  height: calc(100% - #{$header-height});
+  left: 0;
+  position: fixed;
+  top: $header-height;
+  width: 100%;
+  z-index: 1;
+
+  &.hidden {
+    display: none;
+  }
+
+  &.fadeIn {
+    animation-duration: 1s;
+    animation-name: fadeInLeft;
+    animation-fill-mode: both;
+  }
+
+  &.fadeOut {
+    animation-duration: 0.75s;
+    animation-name: fadeOut;
+    animation-fill-mode: both;
+  }
+}
+
+.applicant-detail-view {
+  margin: 20px;
+  position: relative;
+
+  .close {
+    color: inherit;
+    font-size: 40px;
+    font-weight: 100;
+    line-height: 1;
+    opacity: 0.4;
+    position: absolute;
+    right: 0;
+    text-decoration: none;
+    top: 0;
+    
+    &:hover {
+      opacity: 0.6;
+    }
+  }
+  .applicant-status-holder {
+    border: 1px solid $brand-primary;
+    border-radius: 4px;
+    margin: 0 200px 40px 0;
+    padding: 15px;
+    font-weight: bold;
+
+    .status-indicator {@include status-indicator(8px)};
+  }
+
+  .avatar-image-holder {
+    $avatar-radius: 100px;
+    background-color: $grey;
+    border-radius: $avatar-radius;
+    display: inline-block;
+    height: 2 * $avatar-radius;
+    width: 2 * $avatar-radius;
+  }
+
+  .applicant-info-holder {
+    text-align: center;
+
+    .applicant-name {
+      font-weight: 300;
+      letter-spacing: 0.5px;
+      margin-bottom: 0;
+    }
+
+    .applicant-location {
+      color: $grey;
+      font-weight: bold;
+      text-transform: capitalize;
+    }
+
+    .actions-table {
+      margin: 20px auto;
+      width: 50%;
+    }
+  }
+}
+
+@keyframes fadeInLeft {
+  0% {
+    opacity: 0;
+    transform: translate3d(-100%, 0, 0);
+  }
+
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}

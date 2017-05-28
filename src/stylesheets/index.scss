@@ -1,0 +1,10 @@
+@import './variables.scss';
+
+body {
+  background-color: $bg-color;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size: 14px;
+  line-height: 1.4;
+  margin: 0;
+  padding: 0;
+}
