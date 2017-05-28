@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';  // This is required by the portal because we need to start another React render node
 import '../stylesheets/ApplicantDetailView.css';
+import ApplicantStatusIndicator from './ApplicantStatusIndicator.js'
 
 class ApplicantDetailView extends Component {
   // creating a portal so view can be appended to body, avoids issue with div being a child of a tr and potential style issues, see https://stackoverflow.com/questions/28802179/how-to-create-a-react-modalwhich-is-append-to-body-with-transitions/28823590#28823590  
@@ -31,13 +32,12 @@ class ApplicantDetailView extends Component {
 
   componentDidUpdate() {
     const visible_class = this.getVisibleClass();
-    const status_class = this.props.applicant.status && this.props.applicant.status.toLowerCase().replace(' ', '-'); //ToDo dry up this line, maybe add data processing in the beginning
     this.updateBodyScroll();
     ReactDOM.render(
       <div className={`applicant-detail-view-holder ${visible_class}`}>
         {/* Potentially break this into multiple components in the future */}
         <div className="applicant-detail-view">
-          <div className="applicant-status-holder"><span className={`status-indicator ${status_class}`}></span>{this.props.applicant.status}</div>
+          <div className="applicant-status-holder"><ApplicantStatusIndicator status={this.props.applicant.status} /></div>
           <div className="applicant-info-holder">
             <a href="#" className="close" onClick={this.hide}>X</a>
             <div className="avatar-image-holder"></div>

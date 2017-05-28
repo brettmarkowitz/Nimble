@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ApplicantStatusIndicator from './ApplicantStatusIndicator.js'
 import ApplicantDetailView from './ApplicantDetailView.js'
 
 class ApplicantRow extends Component {
@@ -15,17 +16,11 @@ class ApplicantRow extends Component {
     this.setState({ show_detail_view: false });
   }
 
-  getStatusClass() {
-    // convert status like "needs screening" to "needs-screening" for use as a className
-    return this.props.applicant.status && this.props.applicant.status.toLowerCase().replace(' ', '-');
-  } 
-
   render() {
-    const status_class = this.getStatusClass();
     return (
       <tr className="applicant-row" onClick={this.showApplicantDetailView}>
         <td>{this.props.applicant.name}</td>
-        <td><span className={`status-indicator ${status_class}`}></span>{this.props.applicant.status}</td>
+        <td><ApplicantStatusIndicator status={this.props.applicant.status} /></td>
         <td>{this.props.applicant.applicationDate}</td>
         <td>No Action</td>
         <td>{this.props.applicant.location}</td>
