@@ -49,7 +49,9 @@ class ApplicantDetailView extends Component {
                 <tr><th>Recent Actions</th></tr>
               </thead>
               <tbody>
-                <tr><td>-- No Actions --</td></tr>
+                {this.props.applicant.actions.map((action, index) =>
+                  <tr key={index}><td>{action.action} <span className="date">({action.date})</span></td></tr>
+                )}
               </tbody>
             </table>
           </div>

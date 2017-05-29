@@ -42,5 +42,11 @@
     text-transform: capitalize;
 
     .status-indicator {@include status-indicator(6px)};
+
+    .date {
+      color: $grey;
+      font-size: 10px;
+      text-transform: lowercase;
+    }
   }
 }

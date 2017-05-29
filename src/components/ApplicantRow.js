@@ -17,12 +17,14 @@ class ApplicantRow extends Component {
   }
 
   render() {
+    const last_action = this.props.applicant.actions.slice(-1)[0];
+
     return (
       <tr className="applicant-row" onClick={this.showApplicantDetailView}>
         <td>{this.props.applicant.name}</td>
         <td><ApplicantStatusIndicator status={this.props.applicant.status} /></td>
         <td>{this.props.applicant.applicationDate}</td>
-        <td>No Action</td>
+        <td>{last_action.action} <span className="date">({last_action.date})</span></td>
         <td>{this.props.applicant.location}</td>
         <td>High Needs</td>
 
