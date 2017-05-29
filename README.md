@@ -104,3 +104,4 @@ As I alluded to above, my strength as a developer is less in speed and more in t
 
 * Keyboard shortcuts (for exiting detail view, etc)
 
+Lastly I didn't check in the build, but you can simply run npm run build to get a minified more production ready version.
