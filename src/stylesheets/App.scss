@@ -1,8 +1,15 @@
 @import './variables.scss';
 
+.app {
+  padding-top: $header-height;
+}
+
 .app-header {
   background-color: $brand-secondary;
   padding: 15px;
+  position: fixed;
+  top: 0;
+  width: 100%;
 
   .app-logo {
     height: 40px;
